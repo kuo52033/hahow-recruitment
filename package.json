@@ -4,7 +4,7 @@
   "description": "This is a project for hahow recruitment",
   "main": "index.js",
   "scripts": {
-    "start": ""
+    "dev": "nodemon index.js"
   },
   "author": "tim",
   "license": "ISC",
