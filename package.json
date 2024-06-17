@@ -1,0 +1,22 @@
+{
+  "name": "hahow-recruitment",
+  "version": "1.0.0",
+  "description": "This is a project for hahow recruitment",
+  "main": "index.js",
+  "scripts": {
+    "start": ""
+  },
+  "author": "tim",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "1.6.7",
+    "config": "3.3.6",
+    "express": "4.17.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.5.0",
+    "eslint": "9.5.0",
+    "globals": "15.6.0",
+    "nodemon": "2.0.13"
+  }
+}
