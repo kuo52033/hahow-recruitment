@@ -2,9 +2,9 @@
   "name": "hahow-recruitment",
   "version": "1.0.0",
   "description": "This is a project for hahow recruitment",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon src/app.js"
   },
   "author": "tim",
   "license": "ISC",
