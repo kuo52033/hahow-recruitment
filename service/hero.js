@@ -1,7 +1,9 @@
-const { sendGetRequestToHahowAPI } = require('../lib/axios')
+const HahowAPI = require('../lib/hahow-api')
 
 function getHeroesList(){
-    return sendGetRequestToHahowAPI('/heroes')
+    const api = new HahowAPI();
+    
+    return api.findHeroes();
 }
 
 module.exports = {
