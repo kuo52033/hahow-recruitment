@@ -1,14 +1,21 @@
 const axios = require('axios');
 const config = require('config');
+const { 
+	InternalServerError,
+	AuthenticationError,
+} = require('../lib/error');
+const { 
+	BACKEND_ERROR,
+	AUTHENTICATED_ERROR,
+ } = require('../lib/error/code');
 
 /**
  * a class for Hahow API
  */
-class HahowAPI {
+class HahowAPI  {
 	constructor() {
 		this.instance = axios.create({
 			baseURL: config.API_BASE_URL,
-			timeout: 5000,
 		});
 	}
 
@@ -20,45 +27,29 @@ class HahowAPI {
 			});
 
 			if(response.data?.code === 1000){
-				throw new Error('backend error');
+				throw new InternalServerError(BACKEND_ERROR);
 			}
 
 			return true;
 		} catch (error) {
-			if(axios.isAxiosError(error)) {
-				throw error;
+			if(error.response?.status === 401) {
+				throw new AuthenticationError(AUTHENTICATED_ERROR);
 			}else {
-				throw new Error(error);
+				throw error;
 			}
 		}
 	}
 
 	async findHeroes(){
-		try {
-			const response = await this.instance.get('/heroes');
+		const response = await this.instance.get('/heroes');
 
-			return response.data;
-		} catch (error) {
-			if(axios.isAxiosError(error)) {
-				throw error;
-			}else {
-				throw new Error(error);
-			}
-		}
+		return response.data;
 	}
 
 	async findHeroProfileById(id){
-		try {
-			const response = await this.instance.get(`/heroes/${id}/profile`);
+		const response = await this.instance.get(`/heroes/${id}/profile`);
 
-			return response.data;
-		} catch (error) {
-			if(axios.isAxiosError(error)) {
-				throw error;
-			}else {
-				throw new Error(error);
-			}
-		}
+		return response.data;
 	}
 }
 
