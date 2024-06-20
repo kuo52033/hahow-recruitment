@@ -14,3 +14,4 @@ app.listen(config.PORT, () => {
     console.log(`server is listening on port ${config.PORT}`);
 })
 
+module.exports = { app }
