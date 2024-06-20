@@ -8,7 +8,7 @@ class HahowAPI {
 	constructor() {
 		this.instance = axios.create({
 			baseURL: config.API_BASE_URL,
-			timeout: 2500,
+			timeout: 5000,
 		});
 	}
 
@@ -36,6 +36,20 @@ class HahowAPI {
 	async findHeroes(){
 		try {
 			const response = await this.instance.get('/heroes');
+
+			return response.data;
+		} catch (error) {
+			if(axios.isAxiosError(error)) {
+				throw error;
+			}else {
+				throw new Error(error);
+			}
+		}
+	}
+
+	async findHeroProfileById(id){
+		try {
+			const response = await this.instance.get(`/heroes/${id}/profile`);
 
 			return response.data;
 		} catch (error) {
