@@ -12,6 +12,27 @@ class HahowAPI {
 		});
 	}
 
+	async auth(name, password){
+		try {
+			const response = await this.instance.post('/auth', {
+				name,
+				password,
+			});
+
+			if(response.data?.code === 1000){
+				throw new Error('backend error');
+			}
+
+			return true;
+		} catch (error) {
+			if(axios.isAxiosError(error)) {
+				throw error;
+			}else {
+				throw new Error(error);
+			}
+		}
+	}
+
 	async findHeroes(){
 		try {
 			const response = await this.instance.get('/heroes');
