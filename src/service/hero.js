@@ -24,7 +24,14 @@ async function getAuthenticatedHeroesList() {
     }))
 }
 
+function getHeroById(id){
+    const api = new HahowAPI();
+    
+    return api.findHeroById(id);
+}
+
 module.exports = {
     getHeroesList,
     getAuthenticatedHeroesList,
+    getHeroById,
 }

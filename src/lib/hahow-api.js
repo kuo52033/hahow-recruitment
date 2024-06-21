@@ -3,10 +3,12 @@ const config = require('config');
 const { 
 	InternalServerError,
 	AuthenticationError,
+	NotFoundError,
 } = require('../lib/error');
 const { 
 	BACKEND_ERROR,
 	AUTHENTICATED_ERROR,
+	NOT_FOUND_HERO,
  } = require('../lib/error/code');
 
 /**
@@ -50,6 +52,24 @@ class HahowAPI  {
 		const response = await this.instance.get(`/heroes/${id}/profile`);
 
 		return response.data;
+	}
+
+	async findHeroById(id){
+		try {
+			const response = await this.instance.get(`/heroes/${id}`);
+
+			if(response.data?.code === 1000){
+				throw new InternalServerError(BACKEND_ERROR);
+			}
+
+			return response.data;
+		} catch (error) {
+			if(error.response?.status === 404) {
+				throw new NotFoundError(NOT_FOUND_HERO);
+			}else {
+				throw error;
+			}
+		}
 	}
 }
 
