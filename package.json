@@ -13,6 +13,7 @@
     "axios": "1.6.7",
     "config": "3.3.6",
     "express": "4.17.2",
+    "fastest-validator": "1.18.0",
     "on-finished": "2.4.1"
   },
   "devDependencies": {

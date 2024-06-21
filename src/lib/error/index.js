@@ -37,8 +37,22 @@ class InternalServerError extends Error {
 	}
 }
 
+class RequestValidationError extends Error {
+	/**
+	 * @param {{CODE: string, MESSAGE: string}} message
+	 */
+	constructor(message) {
+		super(message);
+
+		this.statusCode = 422;
+		this.code = message?.CODE;
+		this.message = message?.MESSAGE;
+	}
+}
+
 module.exports = {
 	AuthenticationError,
 	NotFoundError,
 	InternalServerError,
+	RequestValidationError,
 };
