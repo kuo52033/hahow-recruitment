@@ -30,8 +30,21 @@ function getHeroById(id){
     return api.findHeroById(id);
 }
 
+async function getAuthenticatedHeroById(id){
+    const api = new HahowAPI();
+    
+    const hero = await api.findHeroById(id);
+
+    const heroProfile = await api.findHeroProfileById(id);
+
+    hero.profile = heroProfile;
+
+    return hero;
+}
+
 module.exports = {
     getHeroesList,
     getAuthenticatedHeroesList,
     getHeroById,
+    getAuthenticatedHeroById,
 }
