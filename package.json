@@ -2,11 +2,11 @@
   "name": "hahow-recruitment",
   "version": "1.0.0",
   "description": "This is a project for hahow recruitment",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node ./src/app.js",
-    "dev": "nodemon src/app.js",
-    "test": "jest --forceExit -c ./tests/jest.config.js"
+    "start": "cross-env NODE_ENV=production node ./src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest -c ./tests/jest.config.js"
   },
   "author": "tim",
   "license": "ISC",
