@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = new express.Router();
 const {
+	beforeGetHeroesListRequest,
 	beforeGetHeroRequest,
 } = require('../route-hooks/hero')
 const {
@@ -11,6 +12,7 @@ const {
 
 router.get(
 	'/',
+	beforeGetHeroesListRequest,
 	handleGetHeroesListRequest,
 );
 
