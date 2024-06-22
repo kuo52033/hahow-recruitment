@@ -135,35 +135,26 @@ describe('hero API - get /api/v1/heroe/:heroId', () => {
 			});	
 	});
 
-	test('404 not found - not found hero || 500 backend error', () => {
+	test('404 not found - not found hero', () => {
 		return request(app)
 			.get('/api/v1/heroes/800')
 			.set('Content-Type', 'application/json')
 			.set('Accept', 'application/json')
 			.set(validUser)
-			.expect([404, 500])
+			.expect(404)
 			.then(res => {
-				if(res.statusCode === 500) {
-					errorMatch(res, backEndError);
-				}else{
-					errorMatch(res, notfoundHeroError);
-				}
+				errorMatch(res, notfoundHeroError);
 			});	
 	});
 
-	test('422 unprocessable entity - invalid request payload || 500 backend error', () => {
+	test('422 unprocessable entity - invalid request payload', () => {
 		return request(app)
 			.get('/api/v1/heroes/test')
 			.set('Content-Type', 'application/json')
 			.set('Accept', 'application/json')
-			.set(validUser)
-			.expect([422, 500])
+			.expect(422)
 			.then(res => {
-				if(res.statusCode === 500) {
-					errorMatch(res, backEndError);
-				}else{
-					errorMatch(res, invalidPayloadError);
-				}
+				errorMatch(res, invalidPayloadError);
 			});	
 	});
 });
