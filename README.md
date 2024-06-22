@@ -181,5 +181,34 @@ curl -H "Accept: application/json" -H "Content-Type: application/json" -X GET ht
     "code": "003"
 }
 ```
+## 專案架構
+```bash
+.
+├── config # 環境變數
+├── src
+│   ├── app.js # server 進入點
+│   ├── index.js 
+│   ├── lib # 三方API或一些共用元件
+│   ├── middlewares # server 共用 middleware，ex: 錯誤處理
+│   ├── route-handlers # 負責控制流程及回傳
+│   ├── route-hooks # hook 為一個陣列，由多個 middleware 組成，處理 request 前後，ex: 身分驗證、表單驗證
+│   ├── routes # 定義路由
+│   └── service # 主要執行商業邏輯
+└── tests # API 測試
+```
+## 架構邏輯
+request → app.js → routes → routes-hooks → route-handlers → service → response
 
+request 進來會先根據 routes 進到相對應的 hooks，執行身分驗證等前置作業，再進到 handlers 根據 isAuth 進到不同的 service，service 呼叫 hahow API，把資料處理完後回傳。
+## 三方 library 
+* **express**: Node.JS 環境下的後端框架，能夠加速開發
+* **axios**: 用來處理 http 請求，取得外部資源
+* **config**: 能夠設置 config 全域變數，依環境做區分
+* **fastest-validator**: 一個快速的驗證輸入 library，可以客製化驗證函式
+* **on-finished**: 在 http 完成、錯誤後會觸發監聽的 callback
+* **jest**: 一個 javascript 的測試框架，確保程式正確
+* **supertest**: 可以測試 http request 的工具
+* **cross-env**: 跨作業系統時可以搭配設置環境變數使用
+* **eslint**: 檢查 javascript 是否符合規範，維持程式碼風格與品質
+* **nodemon**: 可以自動重啟 server，方便開發
   
