@@ -15,7 +15,7 @@ router.get(
 );
 
 router.get(
-	'/id=:heroId',
+	'/:heroId',
 	beforeGetHeroRequest,
 	handleGetHeroRequest,
 )

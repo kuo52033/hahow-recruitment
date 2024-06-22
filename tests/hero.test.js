@@ -88,10 +88,10 @@ describe('hero API - get /api/v1/heroes', () => {
 	});
 });
 
-describe('hero API - get /api/v1/heroe/id=:heroId', () => {
+describe('hero API - get /api/v1/heroe/:heroId', () => {
 	test('200 ok - should return hero || 500 backend error', () => {
 		return request(app)
-			.get('/api/v1/heroes/id=3')
+			.get('/api/v1/heroes/3')
 			.set('Content-Type', 'application/json')
 			.set('Accept', 'application/json')
 			.expect([200, 500])
@@ -106,7 +106,7 @@ describe('hero API - get /api/v1/heroe/id=:heroId', () => {
 
 	test('200 ok - should return hero with authenticated profile || 500 backend error', () => {
 		return request(app)
-			.get('/api/v1/heroes/id=3')
+			.get('/api/v1/heroes/3')
 			.set('Content-Type', 'application/json')
 			.set('Accept', 'application/json')
 			.set(validUser)
@@ -125,7 +125,7 @@ describe('hero API - get /api/v1/heroe/id=:heroId', () => {
 
 	test('401 unauthenticated - invalid Name or Password', () => {
 		return request(app)
-			.get('/api/v1/heroes/id=3')
+			.get('/api/v1/heroes/3')
 			.set('Content-Type', 'application/json')
 			.set('Accept', 'application/json')
 			.set(invalidUser)
@@ -137,7 +137,7 @@ describe('hero API - get /api/v1/heroe/id=:heroId', () => {
 
 	test('404 not found - not found hero || 500 backend error', () => {
 		return request(app)
-			.get('/api/v1/heroes/id=800')
+			.get('/api/v1/heroes/800')
 			.set('Content-Type', 'application/json')
 			.set('Accept', 'application/json')
 			.set(validUser)
@@ -153,7 +153,7 @@ describe('hero API - get /api/v1/heroe/id=:heroId', () => {
 
 	test('422 unprocessable entity - invalid request payload || 500 backend error', () => {
 		return request(app)
-			.get('/api/v1/heroes/id=test')
+			.get('/api/v1/heroes/test')
 			.set('Content-Type', 'application/json')
 			.set('Accept', 'application/json')
 			.set(validUser)
