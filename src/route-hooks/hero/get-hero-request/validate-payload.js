@@ -1,6 +1,6 @@
 const { INVALID_REQUEST_PAYLOAD } = require('../../../lib/error/code');
 const { RequestValidationError } = require('../../../lib/error');
-const { 
+const {
 	validator,
 	generateIdSchema,
 } = require('../../../lib/validation');
@@ -12,9 +12,9 @@ const checkParams = validator.compile({
 module.exports = (req, res, next) => {
 	const checkResult = checkParams(req.params);
 
-	if(checkResult !== true) {
-		return next(new RequestValidationError(INVALID_REQUEST_PAYLOAD))
+	if (checkResult !== true) {
+		return next(new RequestValidationError(INVALID_REQUEST_PAYLOAD));
 	}
 
-	next()
+	next();
 };

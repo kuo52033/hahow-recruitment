@@ -1,4 +1,3 @@
- 
 // eslint-disable-next-line no-unused-vars
 module.exports = (error, req, res, _) => {
 	res.locals.error = error;

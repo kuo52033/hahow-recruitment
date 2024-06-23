@@ -1,4 +1,4 @@
-const HahowAPI = require('../lib/hahow-api')
+const HahowAPI = require('../lib/hahow-api');
 
 /**
  * validate name and password, update res.locals.isAuth
@@ -14,7 +14,7 @@ async function isLoggedIn(req, res, next) {
 
 	try {
 		const api = new HahowAPI();
-		
+
 		await api.auth(name, password);
 
 		res.locals.isAuth = true;
@@ -23,8 +23,10 @@ async function isLoggedIn(req, res, next) {
 	} catch (error) {
 		next(error);
 	}
-};
+}
+
+;
 
 module.exports = {
-    isLoggedIn,
-}
+	isLoggedIn,
+};

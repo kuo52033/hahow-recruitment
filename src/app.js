@@ -9,4 +9,4 @@ app.use(logRequest);
 app.use('/api/v1', router);
 app.use(handleError);
 
-module.exports = { app }
+module.exports = { app };

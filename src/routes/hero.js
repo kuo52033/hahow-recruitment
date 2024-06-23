@@ -4,7 +4,7 @@ const router = new express.Router();
 const {
 	beforeGetHeroesListRequest,
 	beforeGetHeroRequest,
-} = require('../route-hooks/hero')
+} = require('../route-hooks/hero');
 const {
 	handleGetHeroesListRequest,
 	handleGetHeroRequest,
@@ -20,6 +20,6 @@ router.get(
 	'/:heroId',
 	beforeGetHeroRequest,
 	handleGetHeroRequest,
-)
+);
 
 module.exports = router;
