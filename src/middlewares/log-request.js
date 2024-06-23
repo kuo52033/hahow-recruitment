@@ -3,7 +3,11 @@ const onFinished = require('on-finished');
 module.exports = (req, res, next) => {
 	const startTime = new Date();
 
-	const onFinishedHandler = (error, res) => {
+	/**
+	 * execute a callback when a request finish or error.
+	 * @param {local: {error: Error}} res 
+	 */
+	const onFinishedHandler = (_, res) => {
 		const finishTime = new Date();
 		const processTimeInMillisecond = finishTime - startTime;
 		const message = `[${res.statusCode}] ${processTimeInMillisecond}ms ${req.method} ${req.originalUrl}`;

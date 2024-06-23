@@ -1,7 +1,7 @@
 const HahowAPI = require('../lib/hahow-api')
 
 /**
- * validate name and password
+ * validate name and password, update res.locals.isAuth
  */
 async function isLoggedIn(req, res, next) {
 	const name = req.header('Name');
