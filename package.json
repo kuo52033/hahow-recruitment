@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "jest -c ./tests/jest.config.js"
+    "test": "jest -c ./tests/jest.config.js",
+    "lint": "eslint --fix -c eslint.config.mjs"
   },
   "author": "tim",
   "license": "ISC",
@@ -20,7 +21,7 @@
   "devDependencies": {
     "@eslint/js": "9.5.0",
     "cross-env": "7.0.3",
-    "eslint": "7.20.0",
+    "eslint": "9.5.0",
     "globals": "15.6.0",
     "jest": "29.7.0",
     "nodemon": "2.0.13",
