@@ -21,8 +21,8 @@ class HahowAPI  {
 	/**
 	 * @param {string} name 
 	 * @param {string} password 
-	 * @returns {boolean}
-	 * @throws {InternalServerError} - if API return code 1000
+	 * @returns {undefined}
+	 * @throws {InternalServerError} - if API not return OK
 	 * @throws {AuthenticationError} - if name or password invalid
 	 */
 	async auth(name, password){
@@ -32,11 +32,9 @@ class HahowAPI  {
 				password,
 			});
 
-			if(response.data?.code === 1000){
+			if(response.data !== 'OK'){
 				throw new InternalServerError(BACKEND_ERROR);
 			}
-
-			return true;
 		} catch (error) {
 			if(error.response?.status === 401) {
 				throw new AuthenticationError(AUTHENTICATED_ERROR);

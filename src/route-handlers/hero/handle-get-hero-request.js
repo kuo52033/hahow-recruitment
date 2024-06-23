@@ -6,7 +6,7 @@ module.exports = async (req, res, next) =>{
     let hero;
 
     try {
-        if(isAuth) {
+        if(isAuth === true) {
             hero = await getAuthenticatedHeroById(heroId);
         }else{
             hero = await getHeroById(heroId);

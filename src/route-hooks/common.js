@@ -8,18 +8,21 @@ async function isLoggedIn(req, res, next) {
 	const password = req.header('Password');
 
 	if (!name||!password) {
+		res.locals.isAuth = false;
 		return next();
 	}
-	
-	const api = new HahowAPI();
 
 	try {
-		res.locals.isAuth = await api.auth(name, password);
-	} catch (error) {
-		return next(error);
-	}
+		const api = new HahowAPI();
+		
+		await api.auth(name, password);
 
-	next();
+		res.locals.isAuth = true;
+
+		next();
+	} catch (error) {
+		next(error);
+	}
 };
 
 module.exports = {
