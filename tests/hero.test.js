@@ -140,7 +140,6 @@ describe('hero API - get /api/v1/heroe/:heroId', () => {
 			.get('/api/v1/heroes/800')
 			.set('Content-Type', 'application/json')
 			.set('Accept', 'application/json')
-			.set(validUser)
 			.expect(404)
 			.then(res => {
 				errorMatch(res, notfoundHeroError);
