@@ -201,12 +201,12 @@ request → app.js → routes → routes-hooks → route-handlers → service �
 
 request 進來會先根據 routes 進到相對應的 hooks，執行身分驗證等前置作業，再進到 handlers 根據 isAuth 進到不同的 service，service 呼叫 hahow API，把資料處理完後回傳。
 ## 三方 library 
-* **express**: Node.JS 環境下的後端框架，能夠加速開發
+* **express**: Node.JS 環境下的 web 後端框架
 * **axios**: 用來處理 http 請求，取得外部資源
 * **config**: 能夠設置 config 全域變數，依環境做區分
 * **fastest-validator**: 一個快速的驗證輸入 library，可以客製化驗證函式
 * **on-finished**: 在 http 完成、錯誤後會觸發監聽的 callback
-* **jest**: 一個 javascript 的測試框架，確保程式正確
+* **jest**: 一個 javascript 的測試框架，確保程式運行邏輯正確
 * **supertest**: 可以測試 http request 的工具
 * **cross-env**: 跨作業系統時可以搭配設置環境變數使用
 * **eslint**: 檢查 javascript 是否符合規範，維持程式碼風格與品質
@@ -214,5 +214,5 @@ request 進來會先根據 routes 進到相對應的 hooks，執行身分驗證�
 ## 寫註解原則
 我會先思考未來幾個月的我或是別人在看這段程式碼時，能不能快速理解在做什麼以及為什麼會這樣寫，如果認知不到的話就會寫註解。有特別要標註的、讓 reviewer 更容易理解的地方也會加上註解。
 ## 遇到的困難
-主要是在架構上思考得比較久，想要讓程式好維護、易懂，API 盡量都用已寫好的模組，將流程組織起來，並讓邏輯最小化可以更容易測試與除錯。
+主要是在架構上思考得比較久，想要讓程式好維護、易讀，API 盡量都用已寫好的模組，將流程組織起來，並讓邏輯縮小可以更容易測試與除錯，service 保持遵守單一職責原則。
 
