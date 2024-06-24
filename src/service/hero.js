@@ -18,9 +18,8 @@ async function getAuthenticatedHeroesList() {
 	return Promise.all(heroesList.map(async hero =>{
 		const profile = await api.findHeroProfileById(hero.id);
 
-		hero.profile = profile;
+		return { ...hero, profile };
 
-		return hero;
 	}));
 }
 
@@ -35,11 +34,9 @@ async function getAuthenticatedHeroById(id) {
 
 	const hero = await api.findHeroById(id);
 
-	const heroProfile = await api.findHeroProfileById(id);
+	const profile = await api.findHeroProfileById(id);
 
-	hero.profile = heroProfile;
-
-	return hero;
+	return { ...hero, profile };
 }
 
 module.exports = {
