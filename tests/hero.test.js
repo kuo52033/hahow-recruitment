@@ -15,7 +15,6 @@ const {
 
 const validUser = { Name: 'hahow', Password: 'rocks' }
 const invalidUser = { Name: 'hahow', Password: 'rockssss' }
-const backEndError = new InternalServerError(BACKEND_ERROR);
 const authenticatedError = new AuthenticationError(AUTHENTICATED_ERROR);
 const notfoundHeroError = new NotFoundError(NOT_FOUND_HERO);
 const invalidPayloadError = new RequestValidationError(INVALID_REQUEST_PAYLOAD);
@@ -62,16 +61,12 @@ describe('hero API - get /api/v1/heroes', () => {
 			.set(validUser)
 			.expect([200, 500])
 			.then(res => {
-				if(res.statusCode === 500){
-					errorMatch(res, backEndError);
-				}else {
-					res.body.heroes.forEach((hero) =>{
-						expect(hero).toMatchObject({
-							...heroMatch,
-							...heroProfileMatch,
-						});
-					})
-				}
+				res.body.heroes.forEach((hero) =>{
+					expect(hero).toMatchObject({
+						...heroMatch,
+						...heroProfileMatch,
+					});
+				})
 			});	
 	});
 
@@ -96,11 +91,7 @@ describe('hero API - get /api/v1/heroe/:heroId', () => {
 			.set('Accept', 'application/json')
 			.expect([200, 500])
 			.then(res => {
-				if(res.statusCode === 500) {
-					errorMatch(res, backEndError);
-				}else{
-					expect(res.body).toMatchObject(heroMatch);
-				}
+				expect(res.body).toMatchObject(heroMatch);
 			});	
 	});
 
@@ -112,14 +103,10 @@ describe('hero API - get /api/v1/heroe/:heroId', () => {
 			.set(validUser)
 			.expect([200, 500])
 			.then(res => {
-				if(res.statusCode === 500) {
-					errorMatch(res, backEndError);
-				}else{
-					expect(res.body).toMatchObject({
-						...heroMatch,
-						...heroProfileMatch,
-					});
-				}
+				expect(res.body).toMatchObject({
+					...heroMatch,
+					...heroProfileMatch,
+				});
 			});	
 	});
 
