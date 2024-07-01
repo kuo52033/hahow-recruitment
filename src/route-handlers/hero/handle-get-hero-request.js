@@ -1,6 +1,6 @@
 const { getHeroById, getAuthenticatedHeroById } = require('../../service/hero');
 
-module.exports = async (req, res, next) =>{
+module.exports = async (req, res, next) => {
 	const { isAuth } = res.locals;
 	const { heroId } = req.params;
 	let hero;

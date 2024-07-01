@@ -15,7 +15,7 @@ async function getAuthenticatedHeroesList() {
 		return [];
 	}
 
-	return Promise.all(heroesList.map(async hero =>{
+	return Promise.all(heroesList.map(async hero => {
 		const profile = await api.findHeroProfileById(hero.id);
 
 		return { ...hero, profile };

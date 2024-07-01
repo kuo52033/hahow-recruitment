@@ -14,6 +14,7 @@ export default [
 			quotes: ['error', 'single'],
 			'object-curly-spacing': ['error', 'always'],
 			'keyword-spacing': ['error', { after: true }],
+			'arrow-spacing': ['error',{ 'before': true, 'after': true }],
 			'comma-dangle': ['error', 'always-multiline'],
 			'no-trailing-spaces': 'error',
 			'space-before-blocks': 'error',

@@ -1,6 +1,6 @@
 const { getHeroesList, getAuthenticatedHeroesList } = require('../../service/hero');
 
-module.exports = async (req, res, next) =>{
+module.exports = async (req, res, next) => {
 	const { isAuth } = res.locals;
 	let heroes;
 
